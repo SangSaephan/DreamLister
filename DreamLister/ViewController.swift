@@ -22,6 +22,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
+        
+        //generateTest()
+        attemptFetch()
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,13 +33,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let sections = controller.sections {
+            let sectionInfo = sections[section]
+            
+            return sectionInfo.numberOfObjects
+        }
         
         return 0
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-     
-        return UITableViewCell()
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if let sections = controller.sections {
+            return sections.count
+        }
+        
+        return 0
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
+        configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    
+    // Update cells with information of new items
+    func configureCell(cell: ItemCell, indexPath: NSIndexPath) {
+        let item = controller.object(at: indexPath as IndexPath)
+        cell.configureCell(item: item)
     }
     
     func attemptFetch() {
@@ -45,6 +73,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchRequest.sortDescriptors = [dateSort]
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        self.controller = controller
         
         do {
             try controller.performFetch()
@@ -86,8 +116,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case .update:
             if let indexPath = indexPath {
                 let cell = tableView.cellForRow(at: indexPath) as! ItemCell
+                configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
             }
         }
+    }
+    
+    func generateTest() {
+        var item1 = Item(context: context)
+        item1.name = "MacBook"
+        item1.price = 1500
+        item1.details = "MacBook, a key device you must have to develop iOS apps."
+        
+        var item2 = Item(context: context)
+        item2.name = "Samsung 60\' TV "
+        item2.price = 600
+        item2.details = "There is nothing wrong with having a brand new, big screen tv."
+        
+        var item3 = Item(context: context)
+        item3.name = "iPhone 7"
+        item3.price = 700
+        item3.details = "Get the latest, most innovative iPhone."
+        
+        ad.saveContext()
     }
 
 
