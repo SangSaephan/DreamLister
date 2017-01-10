@@ -13,6 +13,8 @@
 		4E2A77BB1E1F8CEE0070F67C /* DreamLister.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A77B91E1F8CEE0070F67C /* DreamLister.xcdatamodeld */; };
 		4E2A77BD1E1F8CEE0070F67C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E2A77BC1E1F8CEE0070F67C /* Assets.xcassets */; };
 		4E2A77C01E1F8CEE0070F67C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E2A77BE1E1F8CEE0070F67C /* LaunchScreen.storyboard */; };
+		4E7D3A681E246BA5001FA6C9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7D3A671E246BA5001FA6C9 /* CustomTextField.swift */; };
+		4E7D3A6B1E246FA1001FA6C9 /* ItemDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7D3A6A1E246FA1001FA6C9 /* ItemDetailsVC.swift */; };
 		4EAE691B1E20124400D6B3D0 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE691A1E20124400D6B3D0 /* MaterialView.swift */; };
 		4EAE691D1E20D71200D6B3D0 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE691C1E20D71200D6B3D0 /* ItemCell.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +28,8 @@
 		4E2A77BC1E1F8CEE0070F67C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E2A77BF1E1F8CEE0070F67C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E2A77C11E1F8CEE0070F67C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E7D3A671E246BA5001FA6C9 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		4E7D3A6A1E246FA1001FA6C9 /* ItemDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsVC.swift; sourceTree = "<group>"; };
 		4EAE691A1E20124400D6B3D0 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		4EAE691C1E20D71200D6B3D0 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,9 +64,9 @@
 		4E2A77B11E1F8CEE0070F67C /* DreamLister */ = {
 			isa = PBXGroup;
 			children = (
+				4E7D3A691E246F73001FA6C9 /* Controller */,
 				4EAE69191E20121F00D6B3D0 /* View */,
 				4E2A77B21E1F8CEE0070F67C /* AppDelegate.swift */,
-				4E2A77B41E1F8CEE0070F67C /* ViewController.swift */,
 				4E2A77B61E1F8CEE0070F67C /* Main.storyboard */,
 				4E2A77BC1E1F8CEE0070F67C /* Assets.xcassets */,
 				4E2A77BE1E1F8CEE0070F67C /* LaunchScreen.storyboard */,
@@ -72,9 +76,19 @@
 			path = DreamLister;
 			sourceTree = "<group>";
 		};
+		4E7D3A691E246F73001FA6C9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4E2A77B41E1F8CEE0070F67C /* ViewController.swift */,
+				4E7D3A6A1E246FA1001FA6C9 /* ItemDetailsVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		4EAE69191E20121F00D6B3D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4E7D3A671E246BA5001FA6C9 /* CustomTextField.swift */,
 				4EAE691A1E20124400D6B3D0 /* MaterialView.swift */,
 				4EAE691C1E20D71200D6B3D0 /* ItemCell.swift */,
 			);
@@ -154,7 +168,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E2A77B51E1F8CEE0070F67C /* ViewController.swift in Sources */,
+				4E7D3A6B1E246FA1001FA6C9 /* ItemDetailsVC.swift in Sources */,
 				4E2A77B31E1F8CEE0070F67C /* AppDelegate.swift in Sources */,
+				4E7D3A681E246BA5001FA6C9 /* CustomTextField.swift in Sources */,
 				4E2A77BB1E1F8CEE0070F67C /* DreamLister.xcdatamodeld in Sources */,
 				4EAE691B1E20124400D6B3D0 /* MaterialView.swift in Sources */,
 				4EAE691D1E20D71200D6B3D0 /* ItemCell.swift in Sources */,

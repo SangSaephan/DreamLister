@@ -122,17 +122,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func generateTest() {
-        var item1 = Item(context: context)
+        let item1 = Item(context: context)
         item1.name = "MacBook"
         item1.price = 1500
         item1.details = "MacBook, a key device you must have to develop iOS apps."
         
-        var item2 = Item(context: context)
+        let item2 = Item(context: context)
         item2.name = "Samsung 60\' TV "
         item2.price = 600
         item2.details = "There is nothing wrong with having a brand new, big screen tv."
         
-        var item3 = Item(context: context)
+        let item3 = Item(context: context)
         item3.name = "iPhone 7"
         item3.price = 700
         item3.details = "Get the latest, most innovative iPhone."
