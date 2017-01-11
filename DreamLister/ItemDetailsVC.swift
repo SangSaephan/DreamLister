@@ -87,6 +87,7 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         }
     }
     
+    // Add/update item into memory
     @IBAction func saveButtonPressed(_ sender: Any) {
         var item: Item!
         let image = Image(context: context)

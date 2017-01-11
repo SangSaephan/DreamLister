@@ -87,7 +87,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func attemptFetch() {
         let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
         let dateSort = NSSortDescriptor(key: "created", ascending: false)
-        fetchRequest.sortDescriptors = [dateSort]
+        let priceSort = NSSortDescriptor(key: "price", ascending: true)
+        let titleSort = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
+        
+        if sortSegmentControl.selectedSegmentIndex == 0 {
+            fetchRequest.sortDescriptors = [dateSort]
+        } else if sortSegmentControl.selectedSegmentIndex == 1 {
+            fetchRequest.sortDescriptors = [priceSort]
+        } else if sortSegmentControl.selectedSegmentIndex == 2 {
+            fetchRequest.sortDescriptors = [titleSort]
+        }
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         controller.delegate = self
@@ -138,7 +147,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func generateTest() {
+    @IBAction func sortControl(_ sender: Any) {
+        attemptFetch()
+        tableView.reloadData()
+    }
+    
+    
+    /*func generateTest() {
         let item1 = Item(context: context)
         item1.name = "MacBook"
         item1.price = 1500
@@ -155,7 +170,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         item3.details = "Get the latest, most innovative iPhone."
         
         ad.saveContext()
-    }
+    }*/
 
 
 }
