@@ -219,6 +219,9 @@
                                     <constraint firstAttribute="width" constant="100" id="PmQ-9j-GgX"/>
                                     <constraint firstAttribute="height" constant="100" id="nuf-37-Smg"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="selectNewImage:" destination="Q8G-uX-7Ax" eventType="touchUpInside" id="wkc-6v-NC8"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkw-yw-U3u">
                                 <rect key="frame" x="131.5" y="351" width="112" height="24"/>
@@ -259,12 +262,16 @@
                     <navigationItem key="navigationItem" title="Add/Edit" id="7G5-OP-wIz">
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="QCR-n8-4Q8">
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="deletePressed:" destination="Q8G-uX-7Ax" id="ury-13-0cb"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="detailsTextField" destination="BvQ-0W-WVX" id="9WB-8M-tAG"/>
                         <outlet property="priceTextField" destination="PHh-J1-zYm" id="pPW-eU-Diz"/>
                         <outlet property="storePickerView" destination="Ong-nH-9cF" id="EB8-M2-5IK"/>
+                        <outlet property="thumbnailImageView" destination="udI-a1-5wn" id="daM-VT-TuE"/>
                         <outlet property="titleTextField" destination="sVe-VQ-AIz" id="j3A-Jq-1iG"/>
                     </connections>
                 </viewController>
@@ -277,7 +284,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kDX-Kc-h3Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3wD-WU-aAe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3wD-WU-aAe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

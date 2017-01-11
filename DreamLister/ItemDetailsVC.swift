@@ -9,15 +9,17 @@
 import UIKit
 import CoreData
 
-class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var titleTextField: CustomTextField!
     @IBOutlet weak var priceTextField: CustomTextField!
     @IBOutlet weak var detailsTextField: CustomTextField!
     @IBOutlet weak var storePickerView: UIPickerView!
+    @IBOutlet weak var thumbnailImageView: UIImageView!
     
     var stores = [Store]()
     var itemToEdit: Item?
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,9 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         
         storePickerView.delegate = self
         storePickerView.dataSource = self
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
         
         /*let store1 = Store(context: context)
         store1.name = "Apple Store"
@@ -48,6 +53,7 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         ad.saveContext()*/
         getStores()
         
+        // If item to edit is not nil, load the item into the text fields
         if itemToEdit != nil {
             loadItemData()
         }
@@ -83,12 +89,16 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         var item: Item!
+        let image = Image(context: context)
+        image.image = thumbnailImageView.image
         
         if itemToEdit == nil {
             item = Item(context: context)
         } else {
             item = itemToEdit
         }
+        
+        item.toImage = image
         
         if let title = titleTextField.text {
             item.name = title
@@ -109,11 +119,13 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         
     }
     
+    // Populate text fields with existing item
     func loadItemData() {
         if let item = itemToEdit {
-            titleTextField.text = itemToEdit?.name
-            priceTextField.text = "\(itemToEdit!.price)"
-            detailsTextField.text = itemToEdit?.details
+            titleTextField.text = item.name
+            priceTextField.text = "\(item.price)"
+            detailsTextField.text = item.details
+            thumbnailImageView.image = item.toImage?.image as! UIImage?
             
             if let store = item.toStore {
                 var index = 0
@@ -128,5 +140,26 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         }
     }
     
+    // Delete the selected item
+    @IBAction func deletePressed(_ sender: Any) {
+        if itemToEdit != nil {
+            context.delete(itemToEdit!)
+           _ = navigationController?.popViewController(animated: true)
+            ad.saveContext()
+        }
+    }
+    
+    // Display the new image onto the thumbnail image view
+    @IBAction func selectNewImage(_ sender: Any) {
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    // Select image from camera roll
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            thumbnailImageView.image = image
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
 
 }
