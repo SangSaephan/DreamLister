@@ -153,7 +153,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    /*func generateTest() {
+    func generateTest() {
         let item1 = Item(context: context)
         item1.name = "MacBook"
         item1.price = 1500
@@ -170,7 +170,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         item3.details = "Get the latest, most innovative iPhone."
         
         ad.saveContext()
-    }*/
+    }
 
 
 }

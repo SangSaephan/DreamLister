@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,12 +20,44 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dream" translatesAutoresizingMaskIntoConstraints="NO" id="TUw-9b-g7s">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DreamLister" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpO-cb-9Ft">
+                                <rect key="frame" x="56" y="293" width="262" height="80"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clouds" translatesAutoresizingMaskIntoConstraints="NO" id="Dks-zn-E8T">
+                                <rect key="frame" x="163" y="176" width="212" height="109"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="212" id="0hd-jg-jOp"/>
+                                    <constraint firstAttribute="height" constant="109" id="nHD-7S-Lab"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Dks-zn-E8T" secondAttribute="trailing" id="2Ka-yF-hsW"/>
+                            <constraint firstItem="TUw-9b-g7s" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="99z-fG-xdT"/>
+                            <constraint firstAttribute="trailing" secondItem="TUw-9b-g7s" secondAttribute="trailing" id="HfE-iY-AKF"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="TUw-9b-g7s" secondAttribute="bottom" id="KUU-Uy-fUf"/>
+                            <constraint firstItem="KpO-cb-9Ft" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="PAZ-bh-HFa"/>
+                            <constraint firstItem="KpO-cb-9Ft" firstAttribute="top" secondItem="Dks-zn-E8T" secondAttribute="bottom" constant="8" id="SXx-3R-VPc"/>
+                            <constraint firstItem="KpO-cb-9Ft" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="hGf-hZ-uUo"/>
+                            <constraint firstItem="TUw-9b-g7s" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="he0-i9-tpF"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="clouds" width="300" height="260"/>
+        <image name="dream" width="1920" height="1200"/>
+    </resources>
 </document>
